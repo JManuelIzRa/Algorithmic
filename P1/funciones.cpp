@@ -175,9 +175,11 @@ void ajustePolinomico(const std::vector <double> &numeroElementos, const std::ve
         for(double j = 0; j<a.size(); j++)
         {
             matrizA[i][j] = sumatorio(numeroElementos, numeroElementos, i, j);
+            std::cout<< matrizA[i][j] << "\t\t\t";
         }
 
         matrizB[i][0] = sumatorio(numeroElementos, tiemposReales, i, 0);
+         std::cout<< matrizB[i][0] << std::endl;
     }
 
     std::vector < std::vector < double > > matrizResultado;
@@ -187,6 +189,7 @@ void ajustePolinomico(const std::vector <double> &numeroElementos, const std::ve
 
     for(int i = 0; i<a.size(); i++)
     {
+        std::cout << "REsultado: " << matrizResultado[i][0];
         a[i] = matrizResultado[i][0];
     }
 
