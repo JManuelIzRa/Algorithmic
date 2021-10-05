@@ -131,12 +131,12 @@ bool estaOrdenado(const std::vector <int> &v)
 void tiemposOrdenacionSeleccion(int nMin, int nMax, int repeticiones, std::vector <double> &tiemposReales, std::vector <double> &numeroElementos)
 {
     Clock time;
+    std::vector <int> v(nMin);
     
     for(int i=0; i<repeticiones; i++)
     {
         numeroElementos.push_back(nMin);
 
-        std::vector <int> v(nMin);
         rellenarVector(v);
 
         time.start();
@@ -174,22 +174,22 @@ void ajustePolinomico(const std::vector <double> &numeroElementos, const std::ve
     {
         for(double j = 0; j<a.size(); j++)
         {
-            matrizA[i][j] = sumatorio(numeroElementos, numeroElementos, i, j);
+            matrizA[i][j] = sumatorio(numeroElementos, numeroElementos, j, i);
             std::cout<< matrizA[i][j] << "\t\t\t";
         }
 
-        matrizB[i][0] = sumatorio(numeroElementos, tiemposReales, i, 0);
+        matrizB[i][0] = sumatorio(numeroElementos, tiemposReales, i, 1);
          std::cout<< matrizB[i][0] << std::endl;
     }
 
     std::vector < std::vector < double > > matrizResultado;
     matrizResultado = std::vector< std::vector< double > > (a.size(), std::vector< double > (1) );
 
-    resolverSistemaEcuaciones(matrizA, matrizB, 3, matrizResultado);
+    resolverSistemaEcuaciones(matrizA, matrizB, a.size(), matrizResultado);
 
     for(int i = 0; i<a.size(); i++)
     {
-        std::cout << "REsultado: " << matrizResultado[i][0];
+        std::cout << "a[" << i << "]: " << matrizResultado[i][0] << std::endl;
         a[i] = matrizResultado[i][0];
     }
 
@@ -220,42 +220,47 @@ float calculoCoeficienteDeterminacion(const std::vector<double> tiemposEstimados
     float mediaTEstimados = 0.0;
     float mediaTReales = 0.0;
 
-    double sumatorio = 0;
+    float varianzaTEstimados = 0.0;
+    float varianzaTReales = 0.0;
 
-    float sumatorioTEstimados = 0.0;
-    float sumatorioTReales = 0.0;
+    mediaTEstimados = media(tiemposEstimados);
+    std::cout <<"MediaTEstimados" << mediaTEstimados << std::endl;
 
-    //Calculo media tiemposEstimados
-    for(int i = 0; i<tiemposEstimados.size(); i++)
-    {
-        sumatorio += tiemposEstimados[i];
-    }
+    mediaTReales = media(tiemposReales);    
+        std::cout <<"MediaTReales" << mediaTReales << std::endl;
 
-    mediaTEstimados = sumatorio/tiemposEstimados.size();
-
-    //Calculo media tiemposReales
-
-    sumatorio = 0;
-
-    for(int i = 0; i<tiemposReales.size(); i++)
-    {
-        sumatorio += tiemposReales[i];
-    }
-
-    mediaTReales = sumatorio/tiemposReales.size();
-
-    //
+    varianzaTEstimados = varianza(tiemposEstimados, mediaTEstimados);
+    std::cout <<"varianzaTEstimados " << varianzaTEstimados << std::endl;
+    varianzaTReales = varianza(tiemposReales, mediaTReales);
+    std::cout <<"varianzaTReales " << varianzaTReales << std::endl;
     
-    for(int i = 0; i<tiemposEstimados.size(); i++)
+    return varianzaTEstimados/varianzaTReales;
+
+}
+
+float media(const std::vector<double> v)
+{
+    float sumatorio = 0;
+    float media = 0;
+
+    for(int i = 0; i<v.size(); i++)
     {
-        sumatorioTEstimados +=  pow(tiemposEstimados[i] - mediaTEstimados,2);
+        sumatorio += v[i];
     }
 
-    for(int i = 0; i<tiemposReales.size(); i++)
+    media = sumatorio/v.size();
+
+    return media;
+}
+
+float varianza(const std::vector<double> v, float media)
+{
+    float sumatorio = 0;
+
+    for(int i = 0; i<v.size(); i++)
     {
-        sumatorioTReales +=  pow(tiemposReales[i] - mediaTReales,2);
+        sumatorio +=  pow(v[i] - media,2);
     }
 
-    return sumatorioTEstimados/sumatorioTReales;
-
+    return sumatorio/v.size();
 }

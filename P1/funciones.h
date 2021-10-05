@@ -17,4 +17,7 @@ void calcularTiemposEstimadosPolinomico(const std::vector<double> &numeroElement
 
 float calculoCoeficienteDeterminacion(const std::vector<double> tiemposEstimados, const std::vector<double> tiemposReales);
 
+float media(const std::vector<double> v);
+float varianza(const std::vector<double> v, float media);
+
 #endif
