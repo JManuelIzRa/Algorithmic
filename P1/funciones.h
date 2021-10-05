@@ -20,4 +20,6 @@ float calculoCoeficienteDeterminacion(const std::vector<double> tiemposEstimados
 float media(const std::vector<double> v);
 float varianza(const std::vector<double> v, float media);
 
+double calcularTiempoEstimadoPolinomico(const double &n, std::vector <double> &a);
+
 #endif

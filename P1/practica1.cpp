@@ -13,7 +13,8 @@ int main(int argc, char** argv)
 
     cout<<"-------------------"<<endl;
     cout<<"Elija una opcion:"<<endl;
-    cout<<"1. Ordenar"<<endl;
+    cout<<"1. Ordenar."<<endl;
+    cout<<"2. Producto de matrices cuadradas."<<endl;
     cout<<"-------------------"<<endl;
     cin>>option;
 
@@ -32,6 +33,9 @@ int main(int argc, char** argv)
             ordenacionSeleccion();
             break;
 
+        case 2:
+            
+            break;
     }
 
     return 0;

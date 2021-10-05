@@ -29,12 +29,13 @@ void ordenacionSeleccion()
     for(int i = minimo; i<=maximo; i=i+incremento)
     {
         tiemposOrdenacionSeleccion(i, maximo, repeticiones, tiemposReales, numeroElementos);
+        //std::cout<<"i: "<< i<< std::endl;
     }
 
     std::ofstream fichero1("tiempoReales.txt");
 
    
-    for(int i = 0; i < tiemposReales.size(); i++)
+    for(long unsigned int i = 0; i < tiemposReales.size(); i++)
     {
         fichero1 << tiemposReales[i] << " " << numeroElementos[i] << std::endl;
     }       
@@ -59,7 +60,7 @@ void ordenacionSeleccion()
     std::cout << "Ecuacion de la curva: "<< std::endl;
     std::cout << "t(n) = " << a[0] << " + " << a[1] << " * n + " << a[2] << " * (n^2)" << std::endl; 
 
-    for(int i = 0; i < tiemposEstimados.size(); i++)
+    for(long unsigned int i = 0; i < tiemposEstimados.size(); i++)
     {
         fichero2 << numeroElementos[i] << " " << tiemposReales[i] << " " << tiemposEstimados[i] << std::endl;
     }       
@@ -72,14 +73,38 @@ void ordenacionSeleccion()
 
     fichero2.close();
 
+    int eleccion = 0;
+    int tamanioMuestra;
+    double tiempo;
+    while(eleccion!=2)
+    {
+        while(eleccion<1 || eleccion>2)
+        {
+            cout<<"¿Desea calcular el tiempo para un tamaño en concreto?"<<endl;
+            cout<<"1. Sí\t2.No"<<endl;
+            cin>>eleccion;
+        }
+
+        cout << "Introduzca el tamaño de la muestra: "<< endl;
+        cin >> tamanioMuestra;
+
+        if(tamanioMuestra==0)
+        {
+            break;
+        }
+
+        tiempo = calcularTiempoEstimadoPolinomico(tamanioMuestra, a);
+
+        cout << "La estimacion es de " << tiempo << endl;
+        
+    }
+
 
 }
 
 void rellenarVector(std::vector<int> &v)
 {
-    
-
-    for(int i; i < v.size(); i++)
+    for(long unsigned int i; i < v.size(); i++)
     {
         v[i] = rand()%10000000;
     }
@@ -92,11 +117,11 @@ bool seleccion(std::vector <int> &v)
     int aux;
     int resultado = false;
 
-    for(int i=1; i<(v.size())-1; i++)
+    for(long unsigned int i=1; i<(v.size())-1; i++)
     {
         posicionMenor = i;
 
-        for(int j=1; j<(v.size())-1; j++)
+        for(long unsigned int j=1; j<(v.size())-1; j++)
         {
             if(v[j]<v[posicionMenor])
             {
@@ -117,7 +142,7 @@ bool seleccion(std::vector <int> &v)
 
 bool estaOrdenado(const std::vector <int> &v)
 {
-    for(int i=0; i<v.size(); i++)
+    for(long unsigned int i=0; i<v.size(); i++)
     {
         if(v[i]>v[i+1])
         {
@@ -175,11 +200,11 @@ void ajustePolinomico(const std::vector <double> &numeroElementos, const std::ve
         for(double j = 0; j<a.size(); j++)
         {
             matrizA[i][j] = sumatorio(numeroElementos, numeroElementos, j, i);
-            std::cout<< matrizA[i][j] << "\t\t\t";
+            //std::cout<< matrizA[i][j] << "\t\t\t";
         }
 
         matrizB[i][0] = sumatorio(numeroElementos, tiemposReales, i, 1);
-         std::cout<< matrizB[i][0] << std::endl;
+        //std::cout<< matrizB[i][0] << std::endl;
     }
 
     std::vector < std::vector < double > > matrizResultado;
@@ -187,9 +212,9 @@ void ajustePolinomico(const std::vector <double> &numeroElementos, const std::ve
 
     resolverSistemaEcuaciones(matrizA, matrizB, a.size(), matrizResultado);
 
-    for(int i = 0; i<a.size(); i++)
+    for(long unsigned int i = 0; i<a.size(); i++)
     {
-        std::cout << "a[" << i << "]: " << matrizResultado[i][0] << std::endl;
+        //std::cout << "a[" << i << "]: " << matrizResultado[i][0] << std::endl;
         a[i] = matrizResultado[i][0];
     }
 
@@ -201,7 +226,7 @@ double sumatorio(const std::vector<double> &n, const std::vector <double> &t, in
 
     for(double i = 0; i<n.size(); i++)
     {
-        total += pow(n[i], expN) + pow(t[i], expT);
+        total += pow(n[i], expN) * pow(t[i], expT);
     }
 
     return total;
@@ -209,7 +234,7 @@ double sumatorio(const std::vector<double> &n, const std::vector <double> &t, in
 
 void calcularTiemposEstimadosPolinomico(const std::vector<double> &numeroElementos, const std::vector <double> &a, std::vector <double> &tiemposEstimados)
 {
-    for(int i = 0; i<numeroElementos.size() ; i++)
+    for(long unsigned int i = 0; i<numeroElementos.size() ; i++)
     {
         tiemposEstimados[i] = a[0] + a[1]*numeroElementos[i] + ( a[2]*pow(numeroElementos[i],2) );
     }
@@ -224,15 +249,15 @@ float calculoCoeficienteDeterminacion(const std::vector<double> tiemposEstimados
     float varianzaTReales = 0.0;
 
     mediaTEstimados = media(tiemposEstimados);
-    std::cout <<"MediaTEstimados" << mediaTEstimados << std::endl;
+    //std::cout <<"MediaTEstimados" << mediaTEstimados << std::endl;
 
     mediaTReales = media(tiemposReales);    
-        std::cout <<"MediaTReales" << mediaTReales << std::endl;
+    //std::cout <<"MediaTReales" << mediaTReales << std::endl;
 
     varianzaTEstimados = varianza(tiemposEstimados, mediaTEstimados);
-    std::cout <<"varianzaTEstimados " << varianzaTEstimados << std::endl;
+    //std::cout <<"varianzaTEstimados " << varianzaTEstimados << std::endl;
     varianzaTReales = varianza(tiemposReales, mediaTReales);
-    std::cout <<"varianzaTReales " << varianzaTReales << std::endl;
+    //std::cout <<"varianzaTReales " << varianzaTReales << std::endl;
     
     return varianzaTEstimados/varianzaTReales;
 
@@ -243,7 +268,7 @@ float media(const std::vector<double> v)
     float sumatorio = 0;
     float media = 0;
 
-    for(int i = 0; i<v.size(); i++)
+    for(long unsigned int i = 0; i<v.size(); i++)
     {
         sumatorio += v[i];
     }
@@ -257,10 +282,20 @@ float varianza(const std::vector<double> v, float media)
 {
     float sumatorio = 0;
 
-    for(int i = 0; i<v.size(); i++)
+    for(long unsigned int i = 0; i<v.size(); i++)
     {
         sumatorio +=  pow(v[i] - media,2);
     }
 
     return sumatorio/v.size();
+}
+
+
+double calcularTiempoEstimadoPolinomico(const double &n, vector <double> &a)
+{
+    double estimacion = 0;
+
+    estimacion = a[0] + a[1]*n + ( a[2]*pow(n,2) );
+
+    return estimacion;
 }
