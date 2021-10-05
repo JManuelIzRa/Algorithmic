@@ -1,4 +1,4 @@
-#include "funciones.h"
+#include "ejercicio1.h"
 #include "ClaseTiempo.hpp"
 #include "sistemaEcuaciones.hpp"
 #include <iostream>
@@ -74,37 +74,28 @@ void ordenacionSeleccion()
     fichero2.close();
 
     int eleccion = 0;
-    int tamanioMuestra;
+    double tamanioMuestra;
     double tiempo;
     
-    while(eleccion!=2)
+    while(eleccion<1 || eleccion>2)
     {
-        while(eleccion<1 || eleccion>2)
+        cout<<"¿Desea calcular el tiempo para un tamaño en concreto?"<<endl;
+        cout<<"1. Sí\t2.No"<<endl;
+        cin>>eleccion;
+    }
+
+    while( tamanioMuestra!=0 && eleccion!=2)
+    {
+        cout << "Introduzca el tamaño de la muestra: "<< endl;
+        cin >> tamanioMuestra;
+
+        if(tamanioMuestra!=0)
         {
-            cout<<"¿Desea calcular el tiempo para un tamaño en concreto?"<<endl;
-            cout<<"1. Sí\t2.No"<<endl;
-            cin>>eleccion;
-        }
-
-        if(eleccion!=2)
-        {
-            cout << "Introduzca el tamaño de la muestra: "<< endl;
-            cin >> tamanioMuestra;
-
-            if(tamanioMuestra==0)
-            {
-                break;
-            }
-
             tiempo = calcularTiempoEstimadoPolinomico(tamanioMuestra, a);
 
             cout << "La estimacion es de " << tiempo << endl;
         }
-       
-        eleccion = 0;
-        
     }
-
 
 }
 
@@ -302,6 +293,8 @@ double calcularTiempoEstimadoPolinomico(const double &n, vector <double> &a)
     double estimacion = 0;
 
     estimacion = a[0] + a[1]*n + ( a[2]*pow(n,2) );
+
+    estimacion = estimacion/(8.64*pow(10,10));
 
     return estimacion;
 }
