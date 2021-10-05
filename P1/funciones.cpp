@@ -76,6 +76,7 @@ void ordenacionSeleccion()
     int eleccion = 0;
     int tamanioMuestra;
     double tiempo;
+    
     while(eleccion!=2)
     {
         while(eleccion<1 || eleccion>2)
@@ -85,17 +86,22 @@ void ordenacionSeleccion()
             cin>>eleccion;
         }
 
-        cout << "Introduzca el tamaño de la muestra: "<< endl;
-        cin >> tamanioMuestra;
-
-        if(tamanioMuestra==0)
+        if(eleccion!=2)
         {
-            break;
+            cout << "Introduzca el tamaño de la muestra: "<< endl;
+            cin >> tamanioMuestra;
+
+            if(tamanioMuestra==0)
+            {
+                break;
+            }
+
+            tiempo = calcularTiempoEstimadoPolinomico(tamanioMuestra, a);
+
+            cout << "La estimacion es de " << tiempo << endl;
         }
-
-        tiempo = calcularTiempoEstimadoPolinomico(tamanioMuestra, a);
-
-        cout << "La estimacion es de " << tiempo << endl;
+       
+        eleccion = 0;
         
     }
 
