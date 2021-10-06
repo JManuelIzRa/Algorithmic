@@ -1,4 +1,4 @@
-.PHONY: ejercicio1
+.PHONY: all
 
-ejercicio1: main.cpp ejercicio1.cpp sistemaEcuaciones.cpp
-	g++ -Wall main.cpp ejercicio1.cpp sistemaEcuaciones.cpp -o ejercicio1.out
+all: main.cpp ejercicio1.cpp ejercicio2.cpp sistemaEcuaciones.cpp
+	g++ -Wall main.cpp ejercicio1.cpp ejercicio2.cpp sistemaEcuaciones.cpp -o main.out -lrt

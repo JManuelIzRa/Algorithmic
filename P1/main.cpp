@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include "ejercicio1.h"
+#include "ejercicio2.h"
+
 
 using namespace std;
 
@@ -15,14 +17,17 @@ int main(int argc, char** argv)
     cout<<"Elija una opcion:"<<endl;
     cout<<"1. Ordenar."<<endl;
     cout<<"2. Producto de matrices cuadradas."<<endl;
+    cout<<"3. Salir."<<endl;
     cout<<"-------------------"<<endl;
     cin>>option;
 
-    while(option<1 || option>1)
+    while(option<1 || option>3)
     {
         cout<<"Error. Seleccione una de las opciones:"<<endl;
         cout<<"Elija una opcion:"<<endl;
         cout<<"1. Ordenar"<<endl;
+        cout<<"2. Producto de matrices cuadradas."<<endl;
+        cout<<"3. Salir."<<endl;
         cin>>option;
 
     }
@@ -34,7 +39,11 @@ int main(int argc, char** argv)
             break;
 
         case 2:
-            productoMatriesCuadradas()
+            productoMatricesCuadradas();
+            break;
+        
+        case 3:
+            std::cout << "Ha elegido salir" << std::endl;
             break;
     }
 

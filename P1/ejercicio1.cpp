@@ -34,7 +34,13 @@ void ordenacionSeleccion()
 
     std::ofstream fichero1("tiempoReales.txt");
 
-   
+    if(!fichero1.is_open())
+    {
+        std::cout << "Error abriendo el fichero"<<std::endl;
+        exit(EXIT_FAILURE);
+    } 
+
+
     for(long unsigned int i = 0; i < tiemposReales.size(); i++)
     {
         fichero1 << tiemposReales[i] << " " << numeroElementos[i] << std::endl;
@@ -57,6 +63,13 @@ void ordenacionSeleccion()
     calcularTiemposEstimadosPolinomico(numeroElementos, a, tiemposEstimados);
 
     std::ofstream fichero2("datosFinales.txt");
+
+    if(!fichero2.is_open())
+    {
+        std::cout << "Error abriendo el fichero"<<std::endl;
+        exit(EXIT_FAILURE);
+    } 
+
     std::cout << "Ecuacion de la curva: "<< std::endl;
     std::cout << "t(n) = " << a[0] << " + " << a[1] << " * n + " << a[2] << " * (n^2)" << std::endl; 
 
@@ -86,14 +99,14 @@ void ordenacionSeleccion()
 
     while( tamanioMuestra!=0 && eleccion!=2)
     {
-        cout << "Introduzca el tamaño de la muestra: "<< endl;
+        cout << "Introduzca el tamaño de la muestra, 0 para salir: "<< endl;
         cin >> tamanioMuestra;
 
         if(tamanioMuestra!=0)
         {
             tiempo = calcularTiempoEstimadoPolinomico(tamanioMuestra, a);
 
-            cout << "La estimacion es de " << tiempo << endl;
+            cout << "La estimacion es de " << tiempo << "dias." << endl;
         }
     }
 
