@@ -183,6 +183,7 @@ bool estaOrdenado(const std::vector <int> &v)
 void tiemposordenacionQuickSort(int nMin, int nMax, int repeticiones, std::vector <double> &tiemposReales, std::vector <double> &numeroElementos)
 {
     Clock time;
+    int t = 0;
     std::vector <int> v(nMin);
     
     for(int i=0; i<repeticiones; i++)
@@ -203,8 +204,8 @@ void tiemposordenacionQuickSort(int nMin, int nMax, int repeticiones, std::vecto
             estaOrdenado(v);
 
             //std::cout<<time.elapsed()<<std::endl;
-            
-            tiemposReales.push_back(time.elapsed());
+            t = time.elapsed();
+            tiemposReales.push_back(log(t) + t);
 
         }
         
@@ -263,8 +264,7 @@ void calcularTiemposEstimadosPolinomico(const std::vector<double> &numeroElement
     double z = 0;
     for(long unsigned int i = 0; i<numeroElementos.size() ; i++)
     {
-        z = numeroElementos[i]*log10(numeroElementos[i]);
-        tiemposEstimados[i] = a[0] + a[1]*z;
+        tiemposEstimados[i] = a[0] + a[1]*numeroElementos[i];
     }
 }
 
@@ -323,7 +323,7 @@ double calcularTiempoEstimadoPolinomico(const double &n, vector <double> &a)
 {
     double estimacion = 0;
 
-    estimacion = a[0] + a[1]*n*log10(n);
+    estimacion = a[0] + a[1]*n;
 
     estimacion = estimacion/(8.64*pow(10,10));
 
