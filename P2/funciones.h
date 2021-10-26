@@ -3,19 +3,9 @@
 
 #include <vector>
 
-
-void ordenacionQuickSort();
-void ordenacionFusion();
-
-
 void rellenarVector(std::vector<int> &v);
 
-void quicksort(double izq, double der, double n, std::vector <int> &v);
-
 bool estaOrdenado(const std::vector <int> &v);
-
-void tiemposordenacionQuickSort(int nMin, int nMax, int repeticiones, std::vector <double> &tiemposReales, std::vector <double> &numeroElementos);
-void tiemposordenacionFusion(int nMin, int nMax, int repeticiones, std::vector <double> &tiemposReales, std::vector <double> &numeroElementos);
 
 void ajustePolinomico(const std::vector <double> &numeroElementos, const std::vector <double> &tiemposReales, std::vector <double> &a);
 
