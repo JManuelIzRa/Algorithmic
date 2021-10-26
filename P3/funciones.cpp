@@ -29,3 +29,40 @@ void cargaDivisas(std::vector <Divisa> &divisas)
     }
     else std::cerr << "Error de apertura del archivo." << std::endl;
 }
+
+void cambio(int n, std::vector <Divisa> C, std::vector <Cambio> resultado)
+{
+    int suma_parcial = 0;
+    std::vector<Divisa>::iterator it_di = C.begin();
+
+    Cambio nuevo_cambio(*it_di);
+
+    resultado.push_back(nuevo_cambio);
+
+    std::vector<Cambio>::iterator it_ca = resultado.begin();
+
+    while( suma_parcial != n )
+    {
+        if( (it_di->getValor() + suma_parcial) <= n )
+        {
+            it_ca->setCantidad(it_ca->getCantidad()+1);
+            suma_parcial += it_di->getValor();
+        }
+        else
+        {
+            it_di++;
+            
+            Cambio nuevo_cambio(*it_di);
+
+            resultado.push_back(nuevo_cambio);
+
+            it_ca++;
+        }
+    }
+}
+
+sino
+devolver no encuentro solucion
+finsi
+finmientras
+fin
