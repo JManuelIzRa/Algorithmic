@@ -1,4 +1,4 @@
-obj= funciones.o sistemaEcuaciones.o quicksort.o fusion.o main.o
+obj= main.o funciones.o sistemaEcuaciones.o quicksort.o fusion.o
 CC= g++
 WARNING = -Wall
 FLAGS = -lrt
@@ -18,10 +18,10 @@ fusion.o: fusion.cpp fusion.h
 	$(CC) -c fusion.cpp $(WARNING)
 
 main.o: main.cpp
-	$(CC) -c fusion.cpp $(WARNING)
+	$(CC) -c main.cpp $(WARNING)
 
 main.out: $(obj)
-	$(CC) main.cpp $(obj) -o main.out $(WARNING) $(FLAGS)
+	$(CC) $(obj) -o main.out $(WARNING) $(FLAGS)
 	
 .PHONY : clean
  
