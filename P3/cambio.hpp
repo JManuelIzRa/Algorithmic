@@ -1,18 +1,19 @@
 #ifndef CAMBIO_H
 #define CAMBIO_H
 
+#include "divisa.hpp"
 class Cambio
 {
     private:
         
-        int valor_;//cts.
+        Divisa divisa_;//cts.
         int cantidad_;//cantidad de cada billete o moneda
 
     public:
         
-        Cambio(const int valor)
+        Cambio(const Divisa divisa):divisa_(divisa)
         {
-            valor_=valor;
+            cantidad_=0;
         }
 
         inline void setCantidad(const int cantidad)
