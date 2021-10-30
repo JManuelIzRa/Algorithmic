@@ -7,7 +7,7 @@
 
 void cargaDivisas(std::vector <Divisa> &divisas);
 bool sortFunction (Divisa i,Divisa j);
-void cambio(int n, std::vector <Divisa> C, std::vector <Cambio> resultado)
+void algoritmoCambio(double n, std::vector <Divisa> C, std::vector <Cambio> &resultado);
 
 
 #endif

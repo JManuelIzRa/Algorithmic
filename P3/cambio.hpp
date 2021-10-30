@@ -2,6 +2,7 @@
 #define CAMBIO_H
 
 #include "divisa.hpp"
+
 class Cambio
 {
     private:
@@ -11,7 +12,7 @@ class Cambio
 
     public:
         
-        Cambio(const Divisa divisa):divisa_(divisa)
+        Cambio(int valor):divisa_(valor)
         {
             cantidad_=0;
         }
@@ -24,6 +25,11 @@ class Cambio
         inline const int getCantidad()
         {
             return this->cantidad_;
+        }
+
+        inline Divisa getDivisa()
+        {
+            return this->divisa_;
         }
 };
 
