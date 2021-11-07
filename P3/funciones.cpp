@@ -60,3 +60,28 @@ void algoritmoCambio(double n, std::vector <Divisa> C, std::vector <Cambio> &res
         }
     }
 }
+
+
+void cargaMateriales(std::vector <Material> &materiales)
+{
+    std::string s;
+
+    int etiqueta;
+    int volumen;
+    int precio;
+
+    FILE* f;
+    f = fopen("materiales.txt","rt");
+    
+    if ( f!=NULL ) 
+    {
+        while(fscanf(f, "%d %d %d", &etiqueta, &volumen, &precio)==3)
+        {
+            Material nuevo_material(etiqueta, volumen, precio);
+
+            materiales.push_back(nuevo_material);
+
+        }
+    }
+    else std::cerr << "Error de apertura del archivo." << std::endl;
+}
