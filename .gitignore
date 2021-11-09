@@ -7,3 +7,7 @@ entrega
 0.*
 
 *.o
+
+CMakeCache*
+CMakeFiles
+cmake_install.cmake

@@ -4,6 +4,7 @@
 #include "divisa.hpp"
 #include "funciones.h"
 #include "material.hpp"
+#include "mochila.hpp"
 
 using std::cout;
 using std::cin;
@@ -15,8 +16,15 @@ int main()
     std::vector <Cambio> resultado;
 
     std::vector <Material> materiales;
+    Mochila mochila;
+    std::vector<Material> contenidoMochila;
 
     int decision = 0;
+
+    cargaDivisas(divisas);
+    cargaMateriales(materiales);
+
+
 
     while(decision != 3)
     {
@@ -45,7 +53,6 @@ int main()
         {
             case 1:
 
-                cargaDivisas(divisas);
 
                 //FLAG Vector ordenado: correcto
                 /*for(std::vector<Divisa>::iterator it=divisas.begin(); it!=divisas.end(); ++it)
@@ -73,12 +80,37 @@ int main()
                 break;
 
             case 2:
-                cargaMateriales(materiales);
                 //FLAG Vector ordenado: correcto
-                for(std::vector<Material>::iterator it=materiales.begin(); it!=materiales.end(); ++it)
+                //for(std::vector<Material>::iterator it=materiales.begin(); it!=materiales.end(); ++it)
+                //{
+                  //  std::cout <<"Etiqueta: " << it->getEtiqueta() << "\tVolumen: " << it->getVolumen() << "\tPrecio: " << it->getPrecio() << std::endl;
+                //}
+                
+                std::cout << "Introduzca el volumen de la mochila: \n";
+                std::cin >> cantidad_problema;
+
+                mochila = algoritmoMochila(materiales, cantidad_problema);
+                
+                contenidoMochila = mochila.getContenido();
+
+                std::cout << "El contenido de la mochila es: \n"; 
+
+                for(std::vector<Material>::iterator it=contenidoMochila.begin(); it!=contenidoMochila.end(); ++it)
                 {
-                    std::cout <<"Etiqueta: " << it->getEtiqueta() << "\tVolumen: " << it->getVolumen() << "\tPrecio: " << it->getPrecio() << std::endl;
+                    std::cout <<"Etiqueta: " << it->getEtiqueta() << "\tVolumen: " << it->getVolumen() << "\tPrecio: " << it->getPrecio();
+
+                    if(it->getParcial() == "Si")
+                    {
+                        std::cout << "\tEs parcial\n";
+                    }
+                    else
+                    {
+                        std::cout << "\n";
+                    }
                 }
+
+                std::cout << "Precio Total: " << mochila.getPrecioTotal() << std::endl;
+
                 break;
         
             case 3:
