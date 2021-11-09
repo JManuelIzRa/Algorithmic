@@ -118,10 +118,7 @@ Mochila algoritmoMochila(std::vector <Material> C, int volumen)
 
             m_dividido = it_ma->getMaterial();
             m_dividido.setVolumen(dividir_volumen_material);
-            // 100 -> 20
-            // 50 -> x
-            //50 * 20 /100
-            //nuevo volumen * precio antiguo / volumen antiguo
+            
             precioNuevo = (dividir_volumen_material*it_ma->getPrecio())/it_ma->getVolumen();
             m_dividido.setPrecio( precioNuevo );
             m_dividido.setParcial("Si");
