@@ -56,17 +56,17 @@ void algoritmoCambio(double n, std::vector <std::vector <int> > C, std::vector <
 
     for(int i=1; i<5; i++ )
     {
-        C[i][0] = 0;        
+        C[i].push_back(0);       
     }
 
     
     for(int i=1; i<5; i++ )
     {
-        for (auto it = C.begin(); it != C.end(); it++) {
+        for (int j=1; j<5; j++) {
             // (*it) is used to get the
             // value at iterator is
             // pointing
-            std::cout << *it << '\t';
+            std::cout << C[i][j] << '\t';
         }
         std::cout << "\n";
 
@@ -108,5 +108,7 @@ void cargaMateriales(std::vector <Material> &materiales)
 
 Mochila algoritmoMochila(std::vector <Material> C, int volumen)
 {
-    
+    Mochila prueba(100);
+
+    return prueba;
 }
