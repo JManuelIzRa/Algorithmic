@@ -7,6 +7,7 @@
 #include "material.hpp"
 #include "mochila.hpp"
 
+
 void cargaDivisas(std::vector <Divisa> &divisas, int &cantidadDivisas);
 bool sortFunctionDivisa (Divisa i,Divisa j);
 void algoritmoCambio(double n, std::vector <std::vector <int> > C, std::vector <Cambio> &resultado);
