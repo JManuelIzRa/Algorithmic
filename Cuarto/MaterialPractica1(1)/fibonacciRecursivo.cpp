@@ -34,8 +34,10 @@ void tiemposFibonacci( long elemento, std::vector<double> &tiemposReales, std::v
     if (reloj.isStarted())
     {
         reloj.stop();
-        tiemposReales.push_back(reloj.elapsed());
+        double tiempo = reloj.elapsed();
+        tiemposReales.push_back(tiempo);
         numeroElementos.push_back(elemento);
+        std::cout << "Numero de elementos: " << elemento << ", Tiempo medio de obtención: " << tiempo << std::endl;
     }
 }
 

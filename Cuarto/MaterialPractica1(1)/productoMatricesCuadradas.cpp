@@ -6,6 +6,10 @@
 #include <fstream> 
 #include <math.h>  
 
+/*********************/
+/* Funcion Principal */
+/*********************/
+
 void productoMatricesCuadradas()
 {
     int minimo, maximo, incremento;
@@ -45,7 +49,7 @@ void productoMatricesCuadradas()
 
     std::vector<double> a(4);
 
-    ajustePolinomicoMatrices( ordenMatriz, tiemposReales, a);
+    ajusteCubicoMatrices( ordenMatriz, tiemposReales, a);
 
     std::vector<double> tiemposEstimados(ordenMatriz.size());
 
@@ -89,7 +93,15 @@ void productoMatricesCuadradas()
 
 }
 
+/************************/
+/* Funciones auxiliares */
+/************************/
 
+/* Función ejercicio 2.1
+*
+* Función que rellena la matriz aleatoriamente
+* con valores entre 0.95 y 1.05
+*/
 void rellenarMatriz( std::vector<std::vector<double>> &matriz ){
     
     for( long unsigned int i=0; i<matriz.size(); i++)
@@ -99,7 +111,11 @@ void rellenarMatriz( std::vector<std::vector<double>> &matriz ){
         }
 }
 
-
+/*
+*
+*
+*
+*/
 void ProductoMatrices( std::vector<std::vector<double>> &matrizA, std::vector<std::vector<double>> &matrizB, std::vector<std::vector<double>> &matrizResultado)
 {
     int ordenM = matrizA.size();
@@ -148,7 +164,7 @@ double sumatorioMatrices( const std::vector<double> &n, const std::vector<double
     return sumatorio;
 }
 
-void ajustePolinomicoMatrices(const std::vector<double> &ordenMatriz, const std::vector<double> &tiemposReales, std::vector <double> &a)
+void ajusteCubicoMatrices(const std::vector<double> &ordenMatriz, const std::vector<double> &tiemposReales, std::vector <double> &a)
 {
     std::vector < std::vector < double > > matrizA(a.size(), std::vector< double >( a.size() ));
     std::vector < std::vector < double > > matrizB(a.size(), std::vector< double >( 1 ));

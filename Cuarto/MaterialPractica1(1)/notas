@@ -6,3 +6,5 @@ Poner la unidad del tiempo en los graficos.
 Funcion para guardar los tiempos, funcion externa.
 
 Hacer un CMakeList
+
+Pasar la estimacion a años/dias/horas/minutos/segundos

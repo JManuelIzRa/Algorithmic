@@ -13,7 +13,7 @@ void tiemposProductoMatrices( int minimo, int maximo, std::vector<double> &tiemp
 
 double sumatorioMatrices( const std::vector<double> &n, const std::vector<double> &t, int expN, int expT);
 
-void ajustePolinomicoMatrices(const std::vector<double> &ordenMatriz, const std::vector<double> &tiemposReales, std::vector <double> &a);
+void ajusteCubicoMatrices(const std::vector<double> &ordenMatriz, const std::vector<double> &tiemposReales, std::vector <double> &a);
 void calcularTiemposEstimadosPolinomicoMatrices(const std::vector <double> &ordenMatriz, std::vector <double> &tiemposReales, const std::vector <double> &a, std::vector <double> &tiemposEstimados);
 
 double calcMediaMatrices(const std::vector <double> &vector);

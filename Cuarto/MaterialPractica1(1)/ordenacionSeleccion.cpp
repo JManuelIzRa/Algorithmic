@@ -105,7 +105,7 @@ void tiemposOrdenacionSeleccion( int nMin, int nMax, int repeticiones, int incre
             }
         }
 
-        std::cout << "Numero de elementos: " << i << ", Tiempo medio de ordenacion: " << tiempo/repeticiones << std::endl;
+        std::cout << "Numero de elementos: " << i << ", Tiempo medio de ordenacion: " << (tiempo/repeticiones)/1000000 << " segundos." << std::endl;
         
         tiemposReales.push_back(tiempo/repeticiones);
         numeroElementos.push_back(i);
