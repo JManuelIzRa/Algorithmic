@@ -1,0 +1,8 @@
+Por si se hacen ejecuciones muy largas poner un feedback cada cierto tiempo para ver por donde va la ejecucion y 
+permitir parar la ejecucion.
+
+Poner la unidad del tiempo en los graficos.
+
+Funcion para guardar los tiempos, funcion externa.
+
+Hacer un CMakeList
