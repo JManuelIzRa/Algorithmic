@@ -149,7 +149,10 @@ void tiemposProductoMatrices( int minimo, int maximo, std::vector<double> &tiemp
         if (reloj.isStarted())
         {
             reloj.stop();
-            tiemposReales.push_back(reloj.elapsed());
+            double tiempo = reloj.elapsed();
+            tiemposReales.push_back(tiempo);
+
+            std::cout << "Orden de la matriz: " << i << ", Tiempo de ejecución: " << tiempo << std::endl;
         }
     }
 }
