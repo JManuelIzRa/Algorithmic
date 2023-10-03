@@ -183,7 +183,8 @@ double calcularTiempoEstimadoExponencial(const double &numeroElementos, const st
 void fibonacciRecursivo()
 {
     long minEle, maxEle;
-    int opcion, valor;
+    int opcion = 0;
+    double valor = 1;
 
     std::cout << "Introduzca el primer elemento de la sucesion de Fibonacci que desea calcular: ";
     std::cin >> minEle;

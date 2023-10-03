@@ -8,3 +8,7 @@ permitir parar la ejecucion.
 - Hacer un CMakeList
 
 - Pasar la estimacion a años/dias/horas/minutos/segundos
+
+productoMatricesCuadradas.cpp - linea 240
+
+Quitar w l en generarGraficos

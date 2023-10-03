@@ -84,7 +84,28 @@ void productoMatricesCuadradas()
 
         if(tamanioMuestra != 0)
         {
-            std::cout << "La estimacion es de " << calcularTiempoEstimadoPolinomicoMatrices(tamanioMuestra, a) << "dias." << std::endl;
+            // Tiempo estimado devuelto en microsegundos
+            double tiempoEstimado = calcularTiempoEstimadoPolinomicoMatrices(tamanioMuestra, a);
+            double tiempoEstimadoRestante = 0;
+
+            int anios = 0;
+            int dias = 0;
+            int minutos = 0;
+            int segundos = 0;
+
+            anios = tiempoEstimado/(1000000 * 60 * 60 * 24 * 365);
+            tiempoEstimadoRestante = fmod(tiempoEstimado, (1000000 * 60 * 60 * 24 * 365));
+
+            dias = tiempoEstimadoRestante/(1000000 * 60 * 60 * 24);
+            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (1000000 * 60 * 60 * 24));
+
+            minutos = tiempoEstimadoRestante/(1000000 * 60 * 60 );
+            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (1000000 * 60 * 60));
+
+            segundos = tiempoEstimadoRestante/(1000000 * 60);
+
+            std::cout << "La estimacion es de " << anios << " anios " 
+            << dias << " dias " << minutos << " minutos " << segundos << " segundos."<< std::endl;
         }
     }
 

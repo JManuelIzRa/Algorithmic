@@ -8,5 +8,5 @@ set xlabel "Orden matriz"
 #X
 set ylabel "Tiempos (microsegundos)"
 #Y
-plot 'datosFinalesM.txt' using 1:2 t "Tiempo Real" w l, 'datosFinalesM.txt' using 1:3 t "Tiempo Estimado" w l 
+plot 'datosFinalesM.txt' using 1:2 t "Tiempo Real", 'datosFinalesM.txt' using 1:3 t "Tiempo Estimado" w l 
 _end_

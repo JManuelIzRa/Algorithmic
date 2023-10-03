@@ -87,7 +87,29 @@ void productoMatricesCuadradas()
 
         if(valor != 0)
         {
-            std::cout <<" El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << calcularTiempoEstimadoPolinomicoMatrices(valor, a) << std::endl;
+            double tiempoEstimado = calcularTiempoEstimadoPolinomicoMatrices(valor, a);
+            double tiempoEstimadoRestante = 0;
+
+            double tiempoEstimadoSegundos = tiempoEstimado/1000000;
+
+            int anios = 0;
+            int dias = 0;
+            int minutos = 0;
+            int segundos = 0;
+
+            anios = tiempoEstimado/(60 * 60 * 24 * 365);
+            tiempoEstimadoRestante = fmod(tiempoEstimado, (60 * 60 * 24 * 365));
+
+            dias = tiempoEstimadoRestante/(60 * 60 * 24);
+            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60 * 24));
+
+            minutos = tiempoEstimadoRestante/(60 * 60);
+            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60));
+
+            segundos = tiempoEstimadoRestante/(60);
+            std::cout << "Tiempo estimado en microsegundos: " << tiempoEstimado << std::endl;
+            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << anios << " anios " 
+            << dias << " dias " << minutos << " minutos " << segundos << " segundos."<< std::endl;
         }
     }
 
@@ -238,5 +260,7 @@ double calcularCoeficienteDeterminacionMatrices(const std::vector <double> &tiem
 
 double calcularTiempoEstimadoPolinomicoMatrices(const double &n, std::vector <double> &a)
 {
-    return a[0] + a[1] * n + a[2] * pow(n,2);
+    double tiempoEstimado = a[0] + a[1] * n + a[2] * pow(n,2);
+
+    return tiempoEstimado;
 }
