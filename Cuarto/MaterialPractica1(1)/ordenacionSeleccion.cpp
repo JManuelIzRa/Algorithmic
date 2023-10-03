@@ -1,5 +1,7 @@
 #include "ordenacionSeleccion.hpp"
 #include "ClaseTiempo.hpp"
+#include "funcionesAuxiliares.hpp"
+#include <iostream>
 
 /*****************************/
 /* Inicio funciones secundarias */
@@ -327,24 +329,14 @@ void ordenacionSeleccion()
 
             double tiempoEstimadoSegundos = tiempoEstimado/1000000;
 
-            int anios = 0;
-            int dias = 0;
-            int minutos = 0;
-            int segundos = 0;
+            double anios, dias, horas, minutos, segundos;
 
-            anios = tiempoEstimado/(60 * 60 * 24 * 365);
-            tiempoEstimadoRestante = fmod(tiempoEstimado, (60 * 60 * 24 * 365));
+            convertirMicrosegundos(tiempoEstimado, &anios, &dias, &horas, &minutos, &segundos);
 
-            dias = tiempoEstimadoRestante/(60 * 60 * 24);
-            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60 * 24));
-
-            minutos = tiempoEstimadoRestante/(60 * 60);
-            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60));
-
-            segundos = tiempoEstimadoRestante/(60);
             std::cout << "\nTiempo estimado en microsegundos: " << tiempoEstimado << std::endl;
-            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << anios << " años " 
-            << dias << " dias " << minutos << " minutos " << segundos << " segundos."<< std::endl;
+
+            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << trunc(anios) << " años " 
+            << trunc(dias) << " dias " << trunc(minutos) << " minutos " << trunc(segundos) << " segundos."<< std::endl;
         
         }
     }

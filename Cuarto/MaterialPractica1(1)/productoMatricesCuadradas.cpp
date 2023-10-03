@@ -1,6 +1,7 @@
 #include "productoMatricesCuadradas.hpp"
 #include "ClaseTiempo.hpp"
 #include "sistemaEcuaciones.hpp"
+#include "funcionesAuxiliares.hpp"
 #include <iostream>
 #include <vector>
 #include <fstream> 
@@ -88,28 +89,14 @@ void productoMatricesCuadradas()
         if(valor != 0)
         {
             double tiempoEstimado = calcularTiempoEstimadoPolinomicoMatrices(valor, a);
-            double tiempoEstimadoRestante = 0;
 
-            double tiempoEstimadoSegundos = tiempoEstimado/1000000;
+            double anios, dias, horas, minutos, segundos;
 
-            int anios = 0;
-            int dias = 0;
-            int minutos = 0;
-            int segundos = 0;
+            convertirMicrosegundos(tiempoEstimado, &anios, &dias, &horas, &minutos, &segundos);
 
-            anios = tiempoEstimado/(60 * 60 * 24 * 365);
-            tiempoEstimadoRestante = fmod(tiempoEstimado, (60 * 60 * 24 * 365));
-
-            dias = tiempoEstimadoRestante/(60 * 60 * 24);
-            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60 * 24));
-
-            minutos = tiempoEstimadoRestante/(60 * 60);
-            tiempoEstimadoRestante = fmod(tiempoEstimadoRestante, (60 * 60));
-
-            segundos = tiempoEstimadoRestante/(60);
             std::cout << "Tiempo estimado en microsegundos: " << tiempoEstimado << std::endl;
-            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << anios << " anios " 
-            << dias << " dias " << minutos << " minutos " << segundos << " segundos."<< std::endl;
+            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << trunc(anios) << " anios " 
+            << trunc(dias) << " dias " << trunc(minutos) << " minutos " << trunc(segundos) << " segundos."<< std::endl;
         }
     }
 

@@ -2,7 +2,6 @@
 #define ORDENACIONSELECCION_HPP
 
 #include "sistemaEcuaciones.hpp"
-#include <iostream>
 #include <vector>
 #include <fstream>  //ofstream
 #include <math.h>   //pow

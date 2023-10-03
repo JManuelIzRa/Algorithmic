@@ -1,5 +1,6 @@
 #include "fibonacciRecursivo.hpp"
 #include "ClaseTiempo.hpp"
+#include "funcionesAuxiliares.hpp"
 
 /*************************/
 /* Funciones secundarias */
@@ -252,8 +253,16 @@ void fibonacciRecursivo()
 
         if(valor != 0)
         {
-            std::cout << "\nEl tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << calcularTiempoEstimadoExponencial(valor, a) << "\n\n";
-        }
+            double tiempoEstimado = calcularTiempoEstimadoExponencial(valor, a);
+
+            double anios, dias, horas, minutos, segundos;
+
+            convertirMicrosegundos(tiempoEstimado, &anios, &dias, &minutos, &minutos, &segundos);
+
+            std::cout << "\nTiempo estimado en microsegundos: " << tiempoEstimado << std::endl;
+            
+            std::cout << "El tiempo estimado que tardaría con un ejemplar de " << valor << " elementos sería: " << trunc(anios) << " años " 
+            << trunc(dias) << " dias " << trunc(minutos) << " minutos " << trunc(segundos) << " segundos."<< std::endl;        }
     }
 
     std::cout << "\n";
