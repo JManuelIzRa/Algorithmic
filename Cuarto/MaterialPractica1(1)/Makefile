@@ -150,6 +150,33 @@ fibonacciRecursivo.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/fibonacciRecursivo.cpp.s
 .PHONY : fibonacciRecursivo.cpp.s
 
+funcionesAuxiliares.o: funcionesAuxiliares.cpp.o
+
+.PHONY : funcionesAuxiliares.o
+
+# target to build an object file
+funcionesAuxiliares.cpp.o:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/funcionesAuxiliares.cpp.o
+.PHONY : funcionesAuxiliares.cpp.o
+
+funcionesAuxiliares.i: funcionesAuxiliares.cpp.i
+
+.PHONY : funcionesAuxiliares.i
+
+# target to preprocess a source file
+funcionesAuxiliares.cpp.i:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/funcionesAuxiliares.cpp.i
+.PHONY : funcionesAuxiliares.cpp.i
+
+funcionesAuxiliares.s: funcionesAuxiliares.cpp.s
+
+.PHONY : funcionesAuxiliares.s
+
+# target to generate assembly for a file
+funcionesAuxiliares.cpp.s:
+	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/funcionesAuxiliares.cpp.s
+.PHONY : funcionesAuxiliares.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -270,6 +297,9 @@ help:
 	@echo "... fibonacciRecursivo.o"
 	@echo "... fibonacciRecursivo.i"
 	@echo "... fibonacciRecursivo.s"
+	@echo "... funcionesAuxiliares.o"
+	@echo "... funcionesAuxiliares.i"
+	@echo "... funcionesAuxiliares.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
