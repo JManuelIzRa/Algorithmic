@@ -1,0 +1,16 @@
+- Por si se hacen ejecuciones muy largas poner un feedback cada cierto tiempo para ver por donde va la ejecucion y 
+permitir parar la ejecucion.
+
+- Poner la unidad del tiempo en los graficos. (DONE.)
+
+- Funcion para guardar los tiempos, funcion externa.
+
+- Extraer las funciones estadísticas a una clase externa.
+
+- Hacer un CMakeList (DONE.)
+
+- Pasar la estimacion a años/dias/horas/minutos/segundos (DONE.)
+
+productoMatricesCuadradas.cpp - linea 240
+
+Quitar w l en generarGraficos (DONE en uno de ellos.)
