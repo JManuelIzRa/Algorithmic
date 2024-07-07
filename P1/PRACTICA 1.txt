@@ -1,0 +1,38 @@
+MAIN()
+{
+	menu de opciones;
+	....
+	case 1:
+		ordenar();
+
+	case 2:
+	....
+
+}
+
+
+void ordenar()
+{
+	//pedir maximo, minimo, incremento de los elementos del vector
+	//para n de minimo a maximo incremento
+		//reservar vector (tamaño n)
+		//rellenar vector
+		//iniciar vector de tiempo
+		//ordenar vector
+		//medir tiempo
+		//introducir en el vector respectivo el tiempo real y el valor n
+	//finpara
+	reservarPolinomio(grado)
+	AjustePolinomico(vector n elementos, vector t reales, vector polinomio)
+	estimarTiempos(veector n elementos, vector polinomio, vector &testimados)
+	para cualquier prediccion introducir n y despues testimado = a0 + a1*n + a2 * n2
+}
+
+reservarPolinomio(grado)
+
+AjustePolinomico(vector nelementos, vector nReales, vector polinomio)
+{
+	obtener la matriz de coeficientes (A) y la de términos independientes (B) del sistema de ecuaciones.
+	Se obtendra calculando los sumatorios correspondientes madiante la funcion sumatorio.
+	
+}
